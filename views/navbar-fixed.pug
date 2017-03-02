@@ -1,0 +1,13 @@
+extends ../node_modules/pug-bootstrap/_bootstrap
+append scripts
+  script(src="../javascripts/scripts.js")
+    
+append styles
+  link(href='../stylesheets/navbar-fixed-top.css', rel='stylesheet')
+  link(href='../stylesheets/table.css', rel='stylesheet')
+
+block body
+  // Fixed navbar
+  +navbar-fixed(title,"navbar")
+    +nav_item("#","active") Score
+    +nav_item("#rules") Rules

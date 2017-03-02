@@ -1,0 +1,69 @@
+extends navbar-fixed
+append body             
+  .container(id='tablebox')
+    h3 Keep Score
+    table(class="table table-striped center" id='playerTable')
+      tr
+        th Player
+        th(colspan='3') Hand
+        th(colspan='3') Score
+        th Remove
+      for item, i in players
+        tr
+          td(contenteditable='true') #{item.name}
+          td(class="cntrcells leftbtncells")
+            button.btn.btn-primary.btn-xs.btn-left(type='button')
+              +icon("chevron-left")
+              //span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
+          td(class="handCells cntrcells") #{item.level}
+          td(class="cntrcells")
+            button.btn.btn-primary.btn-xs.btn-right(type='button')
+              +icon("chevron-right")
+              //span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
+          td(contenteditable='true') 0 
+          td
+            button.btn.btn-primary.btn-xs.btn-plus(type='button')
+              +icon("plus-sign")
+          td #{item.score}
+          td 
+            button.btn.btn-danger(type='button')
+              +icon("minus")
+    
+    button#addRowBtn.btn.btn-success Add Player
+    
+  // put this here because the navbar covers up the word rules, when # linking to it
+  div(id="rules" style="height:20px;")    
+  .container(class='boxes')
+    h3 Rules
+    p The object of the game is to be the first one to complete the eight hands, and finish with the lowest score
+    h4 Setup
+    ul
+      li The game is played with 2 decks of cards
+      li The game is best played with 4 players, however it can be played with 2-6 players
+      li If you want to play with more than 6 players try adding a third deck of cards
+      li Each player is dealt 13 cards, with the remaining cards placed faced down in the center between all the players, this is the pickup pile
+      li The top card in the pickup pile is turned over and placed in the discard pile
+    h4 Starting The Game
+    ul
+      li Turns are taken in a clockwise fashion, starting with the person to the left of the dealer
+      li At the start of a players turn the player picks up a single card, the top card from the pickup or discard pile may be picked up
+      li The player attempts to lay down the current hand they are working on
+      li If a player has already laid down their own hand, they can add cards to other hands that have been played
+      li At the end of a players turn, the player discards a card into the discard pile
+      li If the card that was just discarded could of been played on other hands that have already been laid down and somebody notices before the next person starts their turn and yells out: rummy, or google, or pizza, or what ever you decide on, the person that discarded the card must take one card (that they do not choose) from all of the other players
+      li The round ends when a player discards a card and has no other cards in their hand, if a player has played all of their cards and has no card to discard the round is not over and it is the next persons turn
+      li If in the round that just ended somebody completed the 8th hand, then the game is over and the person with the lowest score wins. Otherwise a new round starts
+      li If any players did not lay down in the previous round then they must try and lay down the same hand again in the up coming round
+    h4 Scoring
+    ul
+      li The lowest score wins
+      li Cards 3-9 are __ points
+      li Face cards are __ points
+      li 2's and jokers are __ points
+    h4 Note
+    ul
+      li Aces are high
+      li 2's and Jokers are wild
+    
+  //.container(class='boxes')
+    //h3 About
