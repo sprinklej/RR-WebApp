@@ -21,7 +21,10 @@ router.get('/', function(req, res, next) {
   });
 });
 
-/*
+module.exports = router;
+
+
+/* changed to using jQuery
 router.post('/add_player', function (req, res) {
     //console.log(req.body.nametxt);
     if (req.body.nametxt == "") {
@@ -42,4 +45,4 @@ router.post('/delete_player', function (req, res) {
     res.redirect("/");
 });
 */
-module.exports = router;
+
