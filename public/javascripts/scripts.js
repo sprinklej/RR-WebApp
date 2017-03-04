@@ -10,7 +10,7 @@ $(document).ready(function(){
     "8 - Two sets of 3 & one run of 7"
   ];
   
-  var nameTxtFld = "<div contenteditable='true' class='editableName'>Name</div>";
+  var nameTxtFld = "<div contenteditable='true' placeholder='Player Name' class='editableName'></div>";
   
   var leftBtn = "<button class='btn btn-primary btn-xs btn-left' type='button'><span class='glyphicon glyphicon-chevron-left' aria-hidden='true'></span></button>";
   
@@ -18,14 +18,14 @@ $(document).ready(function(){
   
   var plusBtn = "<button class='btn btn-primary btn-xs btn-plus' type='button'><span class='glyphicon glyphicon-plus-sign' aria-hidden='true'></span></button>";
   
-  var plusTxtFld = "<div contenteditable='true' class='editableNmbrs'>0 </div>";
+  var plusTxtFld = "<div contenteditable='true' placeholder='000' class='editableNmbrs'></div>";
   
   // add player
   $("#addRowBtn").click(function(){
     var playerNm = "<td>" + nameTxtFld + "</td>";
     var hand = "<td class='cntrcells leftbtncells'>" + leftBtn + "</td><td class='handCells cntrcells'>" + hands[0] + "</td><td class='cntrcells'>" + rightBtn + "</td>";
     var score = "<td>" + plusTxtFld + "</td><td>" + plusBtn + "</td><td>" + 0 + "</td>";
-    var remove = "<td><button class='btn btn-danger' type='button'><span class='glyphicon glyphicon-minus' aria-hidden='true'></span></button></td>";
+    var remove = "<td><button class='btn btn-danger btn-xs' type='button'><span class='glyphicon glyphicon-remove' aria-hidden='true'></span></button></td>";
     
     var newRow = "<tr>" + playerNm + hand + score + remove + "</tr>";
     $("#playerTable").append(newRow);
@@ -65,6 +65,15 @@ $(document).ready(function(){
     $(this).closest('td').prev('td').html(plusTxtFld);
     $(this).closest('td').next('td').html(addScore + curScore);
   }); 
+  
+  // add score with return key
+  $("#playerTable").keypress(function (e) {
+    if (e.which == 13) {
+      alert(document.activeElement.getAttribute('class'));
+      //$('form#login').submit();
+      return false;    //<---- Add this line
+    }
+  });
   
   
   // remove player

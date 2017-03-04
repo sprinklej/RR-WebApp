@@ -7,11 +7,11 @@ append body
         th Player
         th(colspan='3') Hand
         th(colspan='3') Score
-        th Remove
+        th 
       for item, i in players
         tr
           td
-            div(contenteditable='true' class="editableName") #{item.name}
+            div(contenteditable='true' placeholder="Player Name" class="editableName")
           td(class="cntrcells leftbtncells")
             button.btn.btn-primary.btn-xs.btn-left(type='button')
               +icon("chevron-left")
@@ -20,14 +20,14 @@ append body
             button.btn.btn-primary.btn-xs.btn-right(type='button')
               +icon("chevron-right")
           td
-            div(contenteditable='true' class="editableNmbrs") 0 
+            div(contenteditable='true' placeholder="000" class="editableNmbrs")
           td
             button.btn.btn-primary.btn-xs.btn-plus(type='button')
               +icon("plus-sign")
           td #{item.score}
-          td 
-            button.btn.btn-danger(type='button')
-              +icon("minus")
+          td
+            button.btn.btn-danger.btn-xs(type='button')
+              +icon("remove")
     
     button#addRowBtn.btn.btn-success Add Player
     
@@ -84,5 +84,5 @@ append body
       a(href='http://jquery.com' target='_blank') jQuery
       | .
     p 
-      small Created by: 
+      small(style='color:grey;') Created by: 
         a(href='https://sprinklej.github.io' target='_blank') Joel Sprinkle
