@@ -1,7 +1,7 @@
 extends navbar-fixed
 append body             
   .container(class='boxes')
-    h3 Keep Score
+    h3 Score
     table(class="table table-striped center" id='playerTable')
       tr
         th Player
@@ -64,6 +64,25 @@ append body
     ul
       li Aces are high
       li 2's and Jokers are wild
-    
-  //.container(class='boxes')
-    //h3 About
+  
+  div(id="about" style="height:30px;")    
+  .container(class='boxes')
+    h3 About
+    p
+      | This project was built using 
+      a(href='https://nodejs.org' target='_blank') Node
+      | , 
+      a(href='https://expressjs.com' target='_blank') Express
+      | ,  
+      strike 
+        a(href='https://github.com/pugjs/pug/issues/2184' target='_blank') jade
+      | , 
+      a(href='https://pugjs.org/api/getting-started.html' target='_blank') pug
+      | ,  
+      a(href='http://getbootstrap.com' target='_blank') Bootstrap
+      | , and 
+      a(href='http://jquery.com' target='_blank') jQuery
+      | .
+    p 
+      small Created by: 
+        a(href='https://sprinklej.github.io' target='_blank') Joel Sprinkle
