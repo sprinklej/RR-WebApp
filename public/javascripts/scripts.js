@@ -58,6 +58,7 @@ $(document).ready(function(){
     var addScore = parseInt($(this).closest('td').prev('td').text());
     if (isNaN(addScore)) {
       alert("That is not a number");
+      $(this).closest('td').prev('td').html(plusTxtFld);
       return;
     }
     var curScore = parseInt($(this).closest('td').next('td').text());
@@ -72,6 +73,7 @@ $(document).ready(function(){
       var addScore = parseInt($(document.activeElement).text());
       if (isNaN(addScore)) {
         alert("That is not a number");
+        $(document.activeElement).closest('td').html(plusTxtFld);
         return false;
       }
 
