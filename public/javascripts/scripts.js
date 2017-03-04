@@ -57,7 +57,7 @@ $(document).ready(function(){
   $("#playerTable").on("click", ".btn-plus", function(){
     var addScore = parseInt($(this).closest('td').prev('td').text());
     if (isNaN(addScore)) {
-      alert("Thats not a number");
+      alert("That is not a number");
       return;
     }
     var curScore = parseInt($(this).closest('td').next('td').text());
@@ -66,12 +66,19 @@ $(document).ready(function(){
     $(this).closest('td').next('td').html(addScore + curScore);
   }); 
   
-  // add score with return key
+  // add score using the return key
   $("#playerTable").keypress(function (e) {
-    if (e.which == 13) {
-      alert(document.activeElement.getAttribute('class'));
-      //$('form#login').submit();
-      return false;    //<---- Add this line
+    if (e.which == 13 && document.activeElement.getAttribute('class') === "editableNmbrs") {
+      var addScore = parseInt($(document.activeElement).text());
+      if (isNaN(addScore)) {
+        alert("That is not a number");
+        return false;
+      }
+
+      var curScore = parseInt($(document.activeElement).closest('td').next('td').next('td').text());
+
+      $(document.activeElement).closest('td').next('td').next('td').html(addScore + curScore);
+      $(document.activeElement).closest('td').html(plusTxtFld);
     }
   });
   
