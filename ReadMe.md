@@ -1,11 +1,11 @@
-Install:
+Install/Setup:
 
-Migrate to project directory
+Navigate to project directory
 
-run: npm install
+run: "npm install"
 
-On Mac, to start the server run: npm start OR DEBUG=rr:* npm start
+To start the server run: "npm start" OR for mac/linux "DEBUG=rr:* npm start" For windows "set DEBUG=* & npm start"
 
-The server runs on port 3001
+The server currently runs on port 3001, this can be changed in the bin/www file
 
 so navigate to http://localhost:3001

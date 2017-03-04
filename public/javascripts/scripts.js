@@ -10,17 +10,21 @@ $(document).ready(function(){
     "8 - Two sets of 3 & one run of 7"
   ];
   
+  var nameTxtFld = "<div contenteditable='true' class='editableName'>Name</div>";
+  
   var leftBtn = "<button class='btn btn-primary btn-xs btn-left' type='button'><span class='glyphicon glyphicon-chevron-left' aria-hidden='true'></span></button>";
   
   var rightBtn = "<button class='btn btn-primary btn-xs btn-right' type='button'><span class='glyphicon glyphicon-chevron-right' aria-hidden='true'></span></button>";
   
   var plusBtn = "<button class='btn btn-primary btn-xs btn-plus' type='button'><span class='glyphicon glyphicon-plus-sign' aria-hidden='true'></span></button>";
   
+  var plusTxtFld = "<div contenteditable='true' class='editableNmbrs'>0 </div>";
+  
   // add player
   $("#addRowBtn").click(function(){
-    var playerNm = "<td contenteditable='true'>Player Name</td>";
+    var playerNm = "<td>" + nameTxtFld + "</td>";
     var hand = "<td class='cntrcells leftbtncells'>" + leftBtn + "</td><td class='handCells cntrcells'>" + hands[0] + "</td><td class='cntrcells'>" + rightBtn + "</td>";
-    var score = "<td contenteditable='true'>" + 0 + "</td><td>" + plusBtn + "</td><td>" + 0 + "</td>";
+    var score = "<td>" + plusTxtFld + "</td><td>" + plusBtn + "</td><td>" + 0 + "</td>";
     var remove = "<td><button class='btn btn-danger' type='button'><span class='glyphicon glyphicon-minus' aria-hidden='true'></span></button></td>";
     
     var newRow = "<tr>" + playerNm + hand + score + remove + "</tr>";
@@ -37,6 +41,7 @@ $(document).ready(function(){
       $(this).closest('td').next('td').html(curHand);
     }
   }); 
+  
   // right
   $("#playerTable").on("click", ".btn-right", function(){
     var curHand = $(this).closest('td').prev('td').text();
@@ -48,6 +53,7 @@ $(document).ready(function(){
     }
   }); 
   
+  // add score
   $("#playerTable").on("click", ".btn-plus", function(){
     var addScore = parseInt($(this).closest('td').prev('td').text());
     if (isNaN(addScore)) {
@@ -56,7 +62,7 @@ $(document).ready(function(){
     }
     var curScore = parseInt($(this).closest('td').next('td').text());
     
-    $(this).closest('td').prev('td').html("");
+    $(this).closest('td').prev('td').html(plusTxtFld);
     $(this).closest('td').next('td').html(addScore + curScore);
   }); 
   

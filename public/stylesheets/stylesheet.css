@@ -1,0 +1,45 @@
+.container {
+  background-color: rgba(230, 230, 230, 0.7);
+}
+
+/* Table and cell styling */
+#playerTable {
+  background-color: white;
+  opacity:1;
+  width:90%;
+  margin-left:5%; 
+  margin-right:5%;
+}
+
+.cntrcells {
+  text-align:center;
+}
+
+.handCells {
+  min-width:120px;
+}
+
+td {
+  min-width:50px;
+  height:60px;
+  width:80%;
+}
+
+.leftbtncells{
+  width:20px;
+}
+
+.editableName {
+  border:1px solid lightgrey;
+  width:90%;
+}
+
+.editableNmbrs {
+  border:1px solid lightgrey;
+}
+
+/* add player */
+#addRowBtn {
+  margin-left:5%; 
+  margin-bottom:12px;
+}

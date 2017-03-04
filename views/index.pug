@@ -1,6 +1,6 @@
 extends navbar-fixed
 append body             
-  .container(id='tablebox')
+  .container(class='boxes')
     h3 Keep Score
     table(class="table table-striped center" id='playerTable')
       tr
@@ -10,17 +10,17 @@ append body
         th Remove
       for item, i in players
         tr
-          td(contenteditable='true') #{item.name}
+          td
+            div(contenteditable='true' class="editableName") #{item.name}
           td(class="cntrcells leftbtncells")
             button.btn.btn-primary.btn-xs.btn-left(type='button')
               +icon("chevron-left")
-              //span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
           td(class="handCells cntrcells") #{item.level}
           td(class="cntrcells")
             button.btn.btn-primary.btn-xs.btn-right(type='button')
               +icon("chevron-right")
-              //span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
-          td(contenteditable='true') 0 
+          td
+            div(contenteditable='true' class="editableNmbrs") 0 
           td
             button.btn.btn-primary.btn-xs.btn-plus(type='button')
               +icon("plus-sign")
@@ -31,8 +31,8 @@ append body
     
     button#addRowBtn.btn.btn-success Add Player
     
-  // put this here because the navbar covers up the word rules, when # linking to it
-  div(id="rules" style="height:20px;")    
+  // put this here because the navbar covers up the word rules, when jumping to it from the link in the nav bar, it also creates a nice space between the 2 containers
+  div(id="rules" style="height:30px;")    
   .container(class='boxes')
     h3 Rules
     p The object of the game is to be the first one to complete the eight hands, and finish with the lowest score
