@@ -16,7 +16,7 @@ var players = [
 /* Main page */
 router.get('/', function(req, res, next) {
   res.render('index', { 
-    title: 'RR Score Keeper',
+    title: 'RR-ScoreKeeper',
     players: players
   });
 });

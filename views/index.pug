@@ -1,7 +1,8 @@
 extends navbar-fixed
 append body             
   .container
-    h3(class="offset" id="score") Score
+    h3(class="offset" id="score") Keep Score
+    p This table allows you to keep score while you play Riondel Rummy with your friends 😄
     table(class="table table-striped playerTable")
       tr
         th Players
@@ -34,7 +35,7 @@ append body
 
   .container(class='boxes')
     h3(class="offset" id="rules") Rules
-    p The object of the game is to be the first one to complete the eight combinations, and finish with the lowest score
+    p The object of Riondel Rummy is to be the first one to complete the eight combinations, and finish with the lowest score
     h4 Terminology
     ul
       li 
@@ -112,7 +113,6 @@ append body
         td One run of 7
 
     h4(class="offset" id="scoring") Scoring
-    p The lowest score wins
     table(class="table table-striped table-bordered scoreVTable")
       tr
         th Cards
@@ -134,7 +134,7 @@ append body
     ul
       li Aces are high
       li 2's and Jokers are wild
-      li When a set or run is laid down no more than 50% of the card can be wild cards, i.e. 5♠︎, Joker, Joker is not valid
+      li When a set or run is laid down no more than 50% of the cards can be wild cards, i.e. 5♠︎, Joker, Joker is not valid
       li During a single round sets cannot be repeated, i.e. if a player has laid down the set 5♣︎, 5♣︎, 5♣︎, another player cannot play that set until the next round
       li If the pickup pile is depleted during a round the discard pile is shuffled and then becomes a new pickup pile 
   
