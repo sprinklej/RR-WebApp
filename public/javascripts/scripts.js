@@ -28,11 +28,11 @@ $(document).ready(function(){
     var remove = "<td><button class='btn btn-danger btn-xs' type='button'><span class='glyphicon glyphicon-remove' aria-hidden='true'></span></button></td>";
     
     var newRow = "<tr>" + playerNm + hand + score + remove + "</tr>";
-    $("#playerTable").append(newRow);
+    $(".playerTable").append(newRow);
   });
   
   // left
-  $("#playerTable").on("click", ".btn-left", function(){
+  $(".playerTable").on("click", ".btn-left", function(){
     var curHand = $(this).closest('td').next('td').text();
     var index = hands.indexOf(curHand);
     
@@ -43,7 +43,7 @@ $(document).ready(function(){
   }); 
   
   // right
-  $("#playerTable").on("click", ".btn-right", function(){
+  $(".playerTable").on("click", ".btn-right", function(){
     var curHand = $(this).closest('td').prev('td').text();
     var index = hands.indexOf(curHand);
 
@@ -54,7 +54,7 @@ $(document).ready(function(){
   }); 
   
   // add score
-  $("#playerTable").on("click", ".btn-plus", function(){
+  $(".playerTable").on("click", ".btn-plus", function(){
     var addScore = parseInt($(this).closest('td').prev('td').text());
     if (isNaN(addScore)) {
       alert("That is not a number");
@@ -68,7 +68,7 @@ $(document).ready(function(){
   }); 
   
   // add score using the return key
-  $("#playerTable").keypress(function (e) {
+  $(".playerTable").keypress(function (e) {
     if (e.which == 13 && document.activeElement.getAttribute('class') === "editableNmbrs") {
       var addScore = parseInt($(document.activeElement).text());
       if (isNaN(addScore)) {
@@ -86,7 +86,7 @@ $(document).ready(function(){
   
   
   // remove player
-  $("#playerTable").on("click", ".btn-danger", function(){
+  $(".playerTable").on("click", ".btn-danger", function(){
     $(this).parents('tr').first().remove();
   }); 
 

@@ -1,11 +1,11 @@
 extends navbar-fixed
 append body             
-  .container(class='boxes')
-    h3 Score
-    table(class="table table-striped center" id='playerTable')
+  .container
+    h3(class="offset" id="score") Score
+    table(class="table table-striped playerTable")
       tr
-        th Player
-        th(colspan='3') Hand
+        th Players
+        th(colspan='3') Combinations
         th(colspan='3') Score
         th 
       for item, i in players
@@ -30,44 +30,117 @@ append body
               +icon("remove")
     
     button#addRowBtn.btn.btn-success Add Player
-    
-  // put this here because the navbar covers up the word rules, when jumping to it from the link in the nav bar, it also creates a nice space between the 2 containers
-  div(id="rules" style="height:30px;")    
+
+
   .container(class='boxes')
-    h3 Rules
-    p The object of the game is to be the first one to complete the eight hands, and finish with the lowest score
+    h3(class="offset" id="rules") Rules
+    p The object of the game is to be the first one to complete the eight combinations, and finish with the lowest score
+    h4 Terminology
+    ul
+      li 
+        b Set:
+        i  n
+        | -of-a-kind, i.e. 5♥︎, 5♦︎, 5♠︎ - is a set of 3
+      li 
+        b Run:
+        |  Cards of the same suit in ascending/descending order, i.e. 4♥︎, 5♥︎, 6♥︎, 7♥︎ - is a run of 4
+      li 
+        b Combinations:
+        |  Refer to the set(s)/run(s) that need to be accomplished in order to complete the game. There are 
+        a(href="#combinations") 8 combinations 
+        | that must be completed in sequentinal order, as well a player can only accomplish 1 combination per round
     h4 Setup
     ul
-      li The game is played with 2 decks of cards
+      li The game is played with 2 decks of cards, including the Jokers
       li The game is best played with 4 players, however it can be played with 2-6 players
       li If you want to play with more than 6 players try adding a third deck of cards
-      li Each player is dealt 13 cards, with the remaining cards placed faced down in the center between all the players, this is the pickup pile
+      li Each player is dealt 13 cards, the remaining cards are placed faced down in the center, this is the pickup pile
       li The top card in the pickup pile is turned over and placed in the discard pile
     h4 Starting The Game
     ul
       li Turns are taken in a clockwise fashion, starting with the person to the left of the dealer
-      li At the start of a players turn the player picks up a single card, the top card from the pickup or discard pile may be picked up
-      li The player attempts to lay down the current hand they are working on
-      li If a player has already laid down their own hand, they can add cards to other hands that have been played
-      li At the end of a players turn, the player discards a card into the discard pile
-      li If the card that was just discarded could of been played on other hands that have already been laid down and somebody notices before the next person starts their turn and yells out: rummy, or google, or pizza, or what ever you decide on, the person that discarded the card must take one card (that they do not choose) from all of the other players
-      li The round ends when a player discards a card and has no other cards in their hand, if a player has played all of their cards and has no card to discard the round is not over and it is the next persons turn
-      li If in the round that just ended somebody completed the 8th hand, then the game is over and the person with the lowest score wins. Otherwise a new round starts
-      li If any players did not lay down in the previous round then they must try and lay down the same hand again in the up coming round
-    h4 Scoring
-    ul
-      li The lowest score wins
-      li Cards 3-10 are 5 points
-      li Face cards are 20 points
-      li 2's and jokers are 50 points
-    h4 Note
+      li At the start of a players turn the player must draw a single card, the top card from the pickup or discard pile may be picked up
+      li The player attempts to lay down the current combination they are working on. The whole combination must be laid at the same time, i.e. if the player is trying to lay down the combination "Two sets of 3" the player must lay down both sets at the same time
+      li Once player has already laid down their own combination, they can add cards to other combinations that have been played by other players
+      li At the end of a players turn, the player must put a card into the discard pile (face up)
+      li If the card that was just discarded could of been added to other combinations that have been laid down and somebody notices before the next person starts their turn and yells out: rummy, or google, or pizza, or what ever you decide on, the person that discarded the card must take one card (that they do not choose) from all of the other players
+      li The current round ends when a player discards a card and has no other cards in their hand, if a player has played all of their cards and has no card to discard the round is not over and it is the next persons turn
+      li At the end of a round each player adds up the 
+        a(href="#scoring") value 
+        |  of the cards that they still currently hold in their hand, this value is added to their total score
+      li For the next round the person to the left of the dealer is now the dealer
+      li If any players did not lay down their current combination in the previous round then they do not advance to the next combination and try and accomplish the same combination again
+      li Once the 8th combination has been played, the game is over 
+
+    h4(class="offset" id="combinations") Combinations
+    table(class="table table-striped table-bordered combTable")
+      tr
+        th(style="width:60px") Level
+        th Sets
+        th Runs
+      tr
+        td 1
+        td Two sets of 3
+        td -
+      tr
+        td 2
+        td One set of 3
+        td One run of 4
+      tr
+        td 3
+        td -
+        td Two runs of 4
+      tr
+        td 4
+        td Three sets of 3
+        td -
+      tr
+        td 5
+        td Two sets of 3
+        td One run of 4
+      tr
+        td 6
+        td One set of 3
+        td Two runs of 4
+      tr
+        td 7
+        td -
+        td Three runs of 4
+      tr
+        td 8
+        td Two sets of 3
+        td One run of 7
+
+    h4(class="offset" id="scoring") Scoring
+    p The lowest score wins
+    table(class="table table-striped table-bordered scoreVTable")
+      tr
+        th Cards
+        th Value
+      tr
+        td 3-10
+        td 5
+      tr
+        td Face cards
+        td 10
+      tr
+        td 2
+        td 20
+      tr
+        td Jokers
+        td 50
+
+    h4 Notes
     ul
       li Aces are high
       li 2's and Jokers are wild
+      li When a set or run is laid down no more than 50% of the card can be wild cards, i.e. 5♠︎, Joker, Joker is not valid
+      li During a single round sets cannot be repeated, i.e. if a player has laid down the set 5♣︎, 5♣︎, 5♣︎, another player cannot play that set until the next round
+      li If the pickup pile is depleted during a round the discard pile is shuffled and then becomes a new pickup pile 
   
-  div(id="about" style="height:30px;")    
+  
   .container(class='boxes')
-    h3 About
+    h3(class="offset" id="about") About
     p
       | This project was built using 
       a(href='https://nodejs.org' target='_blank') Node
