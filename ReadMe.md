@@ -16,6 +16,7 @@ The server currently listens on port 3001, (this can be changed in the bin/www f
 ## Credits
 
 This project was built with Node, Express, pug, Bootstrap, and jQuery.
+
 Created by: Joel Sprinkle
 
 ## License
